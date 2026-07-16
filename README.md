@@ -1,59 +1,132 @@
-# StockControlFront
+# 📦 Stock Control Front
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.19.
+Frontend do sistema **Stock Control**, desenvolvido em **Angular**, responsável pela interface do usuário para gerenciamento de estoque.
 
-## Development server
+Este projeto consome a API REST desenvolvida em Spring Boot disponível no repositório:
 
-To start a local development server, run:
+➡️ https://github.com/danielabreuoliveira/stock-control-system
+
+---
+
+## 🚀 Tecnologias
+
+- Angular 21
+- TypeScript
+- HTML5
+- CSS3
+- RxJS
+- Angular Router
+- HttpClient
+- MDB Angular UI Kit
+
+---
+
+## 📋 Funcionalidades
+
+Atualmente o sistema possui:
+
+- ✅ Listagem de categorias
+- ✅ Integração com API Spring Boot
+- ✅ Consumo de endpoints REST
+- ✅ Comunicação com banco PostgreSQL através da API
+
+Funcionalidades em desenvolvimento:
+
+- Cadastro de categorias
+- Edição de categorias
+- Exclusão de categorias
+- Cadastro de produtos
+- Controle de estoque
+- Dashboard
+
+---
+
+## 📁 Estrutura do Projeto
+
+```text
+src
+│
+├── app
+│   ├── components
+│   ├── models
+│   ├── services
+│   └── shared
+│
+└── assets
+```
+
+---
+
+## ▶️ Como executar
+
+### Clone o projeto
+
+```bash
+git clone https://github.com/danielabreuoliveira/stock-control-front.git
+```
+
+Entre na pasta
+
+```bash
+cd stock-control-front
+```
+
+Instale as dependências
+
+```bash
+npm install
+```
+
+Execute a aplicação
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🔗 Backend
 
-## Building
+Para o funcionamento completo é necessário executar a API Spring Boot:
 
-To build the project run:
+https://github.com/danielabreuoliveira/stock-control-system
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📸 Telas
 
-## Running unit tests
+Em breve serão adicionadas imagens da aplicação.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 🎯 Objetivo
 
-## Running end-to-end tests
+Este projeto foi desenvolvido para estudo e prática de desenvolvimento Full Stack utilizando Angular e Spring Boot.
 
-For end-to-end (e2e) testing, run:
+O objetivo é simular um sistema de controle de estoque utilizado por pequenas e médias empresas, aplicando conceitos como:
 
-```bash
-ng e2e
-```
+- Arquitetura em camadas
+- Consumo de APIs REST
+- DTOs
+- Mappers
+- CRUD completo
+- Integração Frontend + Backend
+- Boas práticas de organização de código
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 👨‍💻 Autor
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Daniel de Abreu Oliveira
+
+GitHub:
+https://github.com/danielabreuoliveira
+
+LinkedIn:
+https://www.linkedin.com/in/daniel-abreu-oliveira-53199791/
