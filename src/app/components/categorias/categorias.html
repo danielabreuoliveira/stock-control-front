@@ -1,18 +1,18 @@
+<h2>Categorias</h2>
+<button type="button" class="btn btn-primary" mdbRipple (click)="abrirModal()">Nova Categoria</button>
 <table>
   <thead>
-    <tr>
+    <tr> 
       <th>ID</th>
       <th>Nome</th>
       <th>Descrição</th>
     </tr>
   </thead>
   <tbody>
-    @for (categoria of categorias; track categoria.id) {
-      <tr>
-        <td>{{ categoria.id }}</td>
-        <td>{{ categoria.nome }}</td>
-        <td>{{ categoria.descricao }}</td>
-      </tr>
-    }
+    <tr *ngFor="let categoria of categorias">
+      <td>{{ categoria.id }}</td>
+      <td>{{ categoria.nome }}</td>
+      <td>{{ categoria.descricao }}</td>
+    </tr>
   </tbody>
 </table>
