@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Categoria } from '../../models/categoria';
 import { CategoriaService } from './../../services/categoria.service';
 import { Component, OnInit } from '@angular/core';
-import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CategoriaForm } from '../categoria-form/categoria-form';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-categorias',
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './categorias.html',
   styleUrl: './categorias.css',
 })
@@ -15,11 +16,12 @@ export class Categorias implements OnInit {
   categorias: Categoria[] = [];
 
   constructor(
-    private modalService: MdbModalService,
+    private dialog: MatDialog,
     private categoriaService: CategoriaService,
   ) {}
 
   ngOnInit() {
+    alert('Entrou no Categorias');
     this.categoriaService.listar().subscribe({
       next: (resultado) => {
         console.log('Resultado', resultado);
@@ -33,6 +35,6 @@ export class Categorias implements OnInit {
   }
 
   abrirModal() {
-    this.modalService.open(CategoriaForm);
+    this.dialog.open(CategoriaForm);
   }
 }
