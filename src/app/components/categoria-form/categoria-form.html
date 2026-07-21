@@ -1,6 +1,20 @@
 <h2>Nova categoria</h2>
+<form [formGroup]="form">
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nome" placeholder="Nome" />
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Descricao</mat-label>
+    <input matInput formControlName="descricao" placeholder="Descricao" />
+  </mat-form-field>
+</p>
+<div class="example-button-row">
+  <button matButton="filled" (click)="salvar()">Salvar</button>
+  <button matButton="filled" (click)="cancelar()">Cancelar</button>
+</div>
+</form>
 
-<p>Formulário em construção...</p>
-
-<button>Salvar</button>
-<button>Cancelar</button>

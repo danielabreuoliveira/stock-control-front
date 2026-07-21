@@ -4,11 +4,11 @@ import { CategoriaService } from './../../services/categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaForm } from '../categoria-form/categoria-form';
 import { MatDialog } from '@angular/material/dialog';
-import { disabled } from '@angular/forms/signals';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-categorias',
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   standalone: true,
   templateUrl: './categorias.html',
   styleUrl: './categorias.css',
@@ -22,22 +22,30 @@ export class Categorias implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('Categorias iniciou');
+    this.carregarCategorias();
+  }
+
+  abrirModal() {
+    const dialogRef = this.dialog.open(CategoriaForm);
+
+    dialogRef.afterClosed().subscribe((resultado) => {
+      if (resultado) {
+        console.log('Recarregando categorias...');
+        this.carregarCategorias();
+      }
+    });
+  }
+
+  carregarCategorias() {
     this.categoriaService.listar().subscribe({
       next: (resultado) => {
-        console.log('Resultado', resultado);
         this.categorias = resultado;
-        console.log('Quantidade', this.categorias.length);
       },
+
       error: (erro) => {
         console.error('Erro:', erro);
       },
     });
-  }
-
-  abrirModal() {
-    this.dialog.open(
-      CategoriaForm, {
-      width: '500px',
-      disableClose: true});
   }
 }

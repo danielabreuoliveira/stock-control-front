@@ -1,6 +1,6 @@
+import { Categoria } from './../models/categoria';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Categoria } from '../models/categoria';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,6 +17,11 @@ export class CategoriaService {
   listar():  Observable<Categoria[]>{
    return this.http.get<Categoria[]>(this.API)
   }
+
+  salvar(categoria: Categoria): Observable<Categoria>{
+    return this.http.post<Categoria>(this.API,categoria);
+  }
+
 }
 
  
