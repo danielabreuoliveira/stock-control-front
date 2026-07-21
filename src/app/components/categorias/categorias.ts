@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Categoria } from '../../models/categoria';
 import { CategoriaService } from './../../services/categoria.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CategoriaForm } from '../categoria-form/categoria-form';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-categorias',
@@ -19,7 +20,8 @@ export class Categorias implements OnInit {
   constructor(
     private dialog: MatDialog,
     private categoriaService: CategoriaService,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     console.log('Categorias iniciou');
@@ -27,7 +29,9 @@ export class Categorias implements OnInit {
   }
 
   abrirModal() {
-    const dialogRef = this.dialog.open(CategoriaForm);
+    const dialogRef = this.dialog.open(CategoriaForm,{ 
+      width: '500px',
+    });
 
     dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
@@ -48,4 +52,21 @@ export class Categorias implements OnInit {
       },
     });
   }
+
+  editar(categoria: Categoria) {
+
+  const dialogRef = this.dialog.open(CategoriaForm, {
+    width: '500px',
+    data: categoria
+  });
+
+  dialogRef.afterClosed().subscribe(resultado => {
+
+    if (resultado) {
+      this.carregarCategorias();
+    }
+
+  });
+
+}
 }

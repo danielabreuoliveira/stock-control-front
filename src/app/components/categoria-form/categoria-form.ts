@@ -1,7 +1,7 @@
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Categoria } from './../../models/categoria';
 import { CategoriaService } from './../../services/categoria.service';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -36,25 +36,45 @@ export class CategoriaForm {
   constructor(
     private dialogRef: MatDialogRef<CategoriaForm>,
     private categoriaService: CategoriaService,
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public categoria: Categoria
+  ) {
+    if (this.categoria){
+       this.form.patchValue({
+        nome: this.categoria.nome,
+        descricao: this.categoria.descricao
+       });
+    }
+   
+  }
 
   cancelar() {
     this.dialogRef.close();
   }
 
+ 
   salvar() {
-    if (this.form.invalid) {
-      return;
+
+  if (this.form.invalid) {
+    return;
+  }
+
+  const categoria = this.form.getRawValue() as Categoria;
+
+  const requisicao = this.categoria
+      ? this.categoriaService.atualizar(this.categoria.id!, categoria)
+      : this.categoriaService.salvar(categoria);
+
+  requisicao.subscribe({
+
+    next: (categoriaSalva) => {
+      this.dialogRef.close(categoriaSalva);
+    },
+
+    error: (erro) => {
+      console.error('Erro ao salvar:', erro);
     }
 
-    this.categoriaService.salvar(this.form.getRawValue() as Categoria).subscribe({
-      next: (categoriaSalva) => {
-        this.dialogRef.close(categoriaSalva);
-      },
+  });
 
-      error: (erro) => {
-        console.error('Erro ao salvar:', erro);
-      },
-    });
-  }
+}
 }

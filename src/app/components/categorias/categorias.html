@@ -6,6 +6,7 @@
       <th>ID</th>
       <th>Nome</th>
       <th>Descrição</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,7 @@
       <td>{{ categoria.id }}</td>
       <td>{{ categoria.nome }}</td>
       <td>{{ categoria.descricao }}</td>
+      <td><button (click)="editar(categoria)">Editar</button></td>
     </tr>
   </tbody>
 </table>

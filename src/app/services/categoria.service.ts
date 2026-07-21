@@ -7,21 +7,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CategoriaService {
-
   private API = 'http://localhost:8081/categorias';
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient) {}
 
+  listar(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.API);
   }
 
-  listar():  Observable<Categoria[]>{
-   return this.http.get<Categoria[]>(this.API)
+  salvar(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.API, categoria);
   }
 
-  salvar(categoria: Categoria): Observable<Categoria>{
-    return this.http.post<Categoria>(this.API,categoria);
+  atualizar(id: number, categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.API}/${id}`, categoria);
   }
-
 }
-
- 
