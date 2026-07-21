@@ -4,6 +4,7 @@ import { CategoriaService } from './../../services/categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaForm } from '../categoria-form/categoria-form';
 import { MatDialog } from '@angular/material/dialog';
+import { disabled } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-categorias',
@@ -21,7 +22,6 @@ export class Categorias implements OnInit {
   ) {}
 
   ngOnInit() {
-    alert('Entrou no Categorias');
     this.categoriaService.listar().subscribe({
       next: (resultado) => {
         console.log('Resultado', resultado);
@@ -35,6 +35,9 @@ export class Categorias implements OnInit {
   }
 
   abrirModal() {
-    this.dialog.open(CategoriaForm);
+    this.dialog.open(
+      CategoriaForm, {
+      width: '500px',
+      disableClose: true});
   }
 }
