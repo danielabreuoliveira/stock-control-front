@@ -64,3 +64,18 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.btn-excluir {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.btn-excluir:hover {
+  background-color: #bb2d3b;
+}

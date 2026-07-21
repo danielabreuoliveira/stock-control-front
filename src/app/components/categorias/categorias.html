@@ -1,16 +1,11 @@
 <div class="container">
-
   <div class="header">
     <h2>Categorias</h2>
 
-    <button class="btn-nova" (click)="abrirModal()">
-      + Nova Categoria
-    </button>
+    <button class="btn-nova" (click)="abrirModal()">+ Nova Categoria</button>
   </div>
 
-
   <table class="tabela">
-
     <thead>
       <tr>
         <th>ID</th>
@@ -20,13 +15,9 @@
       </tr>
     </thead>
 
-
     <tbody>
-
       @for (categoria of categorias; track categoria.id) {
-
         <tr>
-
           <td>{{ categoria.id }}</td>
 
           <td>{{ categoria.nome }}</td>
@@ -34,19 +25,12 @@
           <td>{{ categoria.descricao }}</td>
 
           <td>
-            <button 
-              class="btn-editar"
-              (click)="editar(categoria)">
-              Editar
-            </button>
+            <button class="btn-editar" (click)="editar(categoria)">Editar</button>
+            <button class="btn-excluir" (click)="excluir(categoria.id)">Excluir</button>
+            <button class="btn-buscar" (click)="buscarPorId(categoria.id)">Buscar</button>
           </td>
-
         </tr>
-
       }
-
     </tbody>
-
   </table>
-
 </div>

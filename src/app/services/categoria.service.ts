@@ -22,4 +22,12 @@ export class CategoriaService {
   atualizar(id: number, categoria: Categoria): Observable<Categoria> {
     return this.http.put<Categoria>(`${this.API}/${id}`, categoria);
   }
+
+  excluir(id: number) {
+    return this.http.delete<void>(`${this.API}/${id}`);
+  }
+
+  buscarPorId(id: number): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.API}/${id}`);
+  }
 }
