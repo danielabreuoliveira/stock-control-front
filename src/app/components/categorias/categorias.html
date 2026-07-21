@@ -1,5 +1,9 @@
 <h2>Categorias</h2>
-<button type="button" (click)="abrirModal()">Nova Categoria</button>
+
+<button type="button" (click)="abrirModal()">
+  Nova Categoria
+</button>
+
 <table>
   <thead>
     <tr> 
@@ -9,12 +13,19 @@
       <th>Ações</th>
     </tr>
   </thead>
+
   <tbody>
-    <tr *ngFor="let categoria of categorias">
-      <td>{{ categoria.id }}</td>
-      <td>{{ categoria.nome }}</td>
-      <td>{{ categoria.descricao }}</td>
-      <td><button (click)="editar(categoria)">Editar</button></td>
-    </tr>
+    @for (categoria of categorias; track categoria.id) {
+      <tr>
+        <td>{{ categoria.id }}</td>
+        <td>{{ categoria.nome }}</td>
+        <td>{{ categoria.descricao }}</td>
+        <td>
+          <button (click)="editar(categoria)">
+            Editar
+          </button>
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
