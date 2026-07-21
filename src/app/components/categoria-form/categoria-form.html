@@ -1,20 +1,69 @@
-<h2>Nova categoria</h2>
+<h2 mat-dialog-title>
+  {{ categoria ? 'Editar Categoria' : 'Nova Categoria' }}
+</h2>
+
+
+<mat-dialog-content>
+
 <form [formGroup]="form">
-<p>
-  <mat-form-field appearance="outline">
+
+  <mat-form-field appearance="outline" class="campo">
+
     <mat-label>Nome</mat-label>
-    <input matInput formControlName="nome" placeholder="Nome" />
+
+    <input 
+      matInput 
+      formControlName="nome"
+      placeholder="Digite o nome">
+
+    @if(form.get('nome')?.hasError('required')
+        && form.get('nome')?.touched){
+
+      <mat-error>
+        Nome é obrigatório
+      </mat-error>
+
+    }
+
   </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Descricao</mat-label>
-    <input matInput formControlName="descricao" placeholder="Descricao" />
+
+
+
+  <mat-form-field appearance="outline" class="campo">
+
+    <mat-label>Descrição</mat-label>
+
+    <textarea
+      matInput
+      formControlName="descricao"
+      placeholder="Digite a descrição">
+    </textarea>
+
+
   </mat-form-field>
-</p>
-<div class="example-button-row">
-  <button matButton="filled" (click)="salvar()">Salvar</button>
-  <button matButton="filled" (click)="cancelar()">Cancelar</button>
-</div>
+
+
 </form>
 
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions align="end">
+
+  <button 
+    mat-button
+    (click)="cancelar()">
+    Cancelar
+  </button>
+
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="salvar()">
+    Salvar
+  </button>
+
+
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Categoria } from './../../models/categoria';
 import { CategoriaService } from './../../services/categoria.service';
 import { Component, Inject } from '@angular/core';
@@ -12,12 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-categoria-form',
   imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatDividerModule,
-    MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  ReactiveFormsModule
   ],
   standalone: true,
   templateUrl: './categoria-form.html',

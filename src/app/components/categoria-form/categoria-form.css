@@ -1,0 +1,14 @@
+.campo {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+
+mat-dialog-content {
+  width: 400px;
+}
+
+
+h2 {
+  margin-bottom: 20px;
+}

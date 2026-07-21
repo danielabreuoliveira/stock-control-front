@@ -1,31 +1,52 @@
-<h2>Categorias</h2>
+<div class="container">
 
-<button type="button" (click)="abrirModal()">
-  Nova Categoria
-</button>
+  <div class="header">
+    <h2>Categorias</h2>
 
-<table>
-  <thead>
-    <tr> 
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
+    <button class="btn-nova" (click)="abrirModal()">
+      + Nova Categoria
+    </button>
+  </div>
 
-  <tbody>
-    @for (categoria of categorias; track categoria.id) {
+
+  <table class="tabela">
+
+    <thead>
       <tr>
-        <td>{{ categoria.id }}</td>
-        <td>{{ categoria.nome }}</td>
-        <td>{{ categoria.descricao }}</td>
-        <td>
-          <button (click)="editar(categoria)">
-            Editar
-          </button>
-        </td>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Ações</th>
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+
+
+    <tbody>
+
+      @for (categoria of categorias; track categoria.id) {
+
+        <tr>
+
+          <td>{{ categoria.id }}</td>
+
+          <td>{{ categoria.nome }}</td>
+
+          <td>{{ categoria.descricao }}</td>
+
+          <td>
+            <button 
+              class="btn-editar"
+              (click)="editar(categoria)">
+              Editar
+            </button>
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>
