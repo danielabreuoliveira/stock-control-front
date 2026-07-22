@@ -1,81 +1,282 @@
 .container {
+
   padding: 30px;
+  background: #f8f9fa;
+  min-height: 100vh;
+
 }
 
 
 .header {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+
 }
 
 
-h2 {
-  margin: 0;
+.header h2 {
+
   font-size: 28px;
+  font-weight: 600;
+
 }
+
 
 
 .btn-nova {
-  background-color: #1976d2;
+
+  background: #1976d2;
   color: white;
+
   border: none;
-  padding: 10px 18px;
+  padding: 12px 20px;
+
   border-radius: 6px;
+
   cursor: pointer;
+
 }
 
 
 .btn-nova:hover {
-  background-color: #125ca1;
+
+  background: #125aa0;
+
 }
+
+
+
+/* BUSCA */
+
+.barra-busca {
+
+  margin-bottom: 20px;
+
+}
+
+
+.barra-busca input {
+
+  width: 350px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+}
+
+
+
+/* TABELA */
 
 
 .tabela {
+
   width: 100%;
-  border-collapse: collapse;
+
   background: white;
+
+  border-collapse: collapse;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
 }
+
+
+
+.tabela thead {
+
+  background: #f1f3f5;
+
+}
+
 
 
 .tabela th {
-  background-color: #f5f5f5;
+
   text-align: left;
-  padding: 12px;
+
+  padding: 15px;
+
+  font-weight: 600;
+
 }
+
 
 
 .tabela td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
+
+  padding: 15px;
+
+  border-top: 1px solid #eee;
+
 }
 
 
-.tabela tr:hover {
-  background-color: #f9f9f9;
+
+.tabela tbody tr:hover {
+
+  background: #f8f9fa;
+
 }
+
+
+
+/* BOTÕES */
 
 
 .btn-editar {
-  background-color: #ffc107;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+
+  background: #ffc107;
+
+  border:none;
+
+  padding:8px 15px;
+
+  border-radius:5px;
+
+  cursor:pointer;
+
 }
+
+
 
 .btn-excluir {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 8px;
-  font-size: 14px;
+
+  background:#dc3545;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 15px;
+
+  border-radius:5px;
+
+  cursor:pointer;
+
+  margin-left:8px;
+
 }
 
+
+
+.btn-editar:hover {
+
+  background:#e0a800;
+
+}
+
+
 .btn-excluir:hover {
-  background-color: #bb2d3b;
+
+  background:#b02a37;
+
+}
+
+.barra-busca {
+
+  display: flex;
+  align-items: center;
+
+  width: 380px;
+
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  padding: 0 12px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.icone-busca {
+
+  font-size: 18px;
+
+  margin-right: 10px;
+
+}
+
+
+.barra-busca input {
+
+  flex: 1;
+
+  border: none;
+
+  outline: none;
+
+  padding: 12px 5px;
+
+  font-size: 14px;
+
+}
+
+.btn-acao {
+
+  width: 38px;
+
+  height: 38px;
+
+  border:none;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  margin-right:8px;
+
+}
+
+
+.btn-acao.editar {
+
+  background:#fff3cd;
+
+}
+
+
+.btn-acao.excluir {
+
+  background:#f8d7da;
+
+}
+
+
+
+.btn-acao:hover {
+
+  transform: scale(1.1);
+
+}
+
+.tabela th:last-child,
+.tabela td:last-child {
+
+  text-align:center;
+
+  width:150px;
+
 }

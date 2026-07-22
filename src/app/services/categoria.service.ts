@@ -30,4 +30,8 @@ export class CategoriaService {
   buscarPorId(id: number): Observable<Categoria> {
     return this.http.get<Categoria>(`${this.API}/${id}`);
   }
+
+  buscarPorNome(nome: string): Observable<Categoria[]> {
+  return this.http.get<Categoria[]>(`${this.API}/buscar?nome=${nome}`);
+}
 }

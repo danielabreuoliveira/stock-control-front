@@ -6,16 +6,19 @@ import { CategoriaForm } from '../categoria-form/categoria-form';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-categorias',
-  imports: [CommonModule, MatButtonModule],
+  imports: [CommonModule, MatButtonModule, FormsModule],
   standalone: true,
   templateUrl: './categorias.html',
   styleUrl: './categorias.css',
 })
 export class Categorias implements OnInit {
   categorias: Categoria[] = [];
+
+  filtro: string = '';
 
   constructor(
     private dialog: MatDialog,
@@ -53,36 +56,26 @@ export class Categorias implements OnInit {
     });
   }
 
-editar(categoria: Categoria) {
-
-  this.categoriaService.buscarPorId(categoria.id)
-    .subscribe({
-
+  editar(categoria: Categoria) {
+    this.categoriaService.buscarPorId(categoria.id).subscribe({
       next: (categoriaEncontrada) => {
-
         const dialogRef = this.dialog.open(CategoriaForm, {
           width: '500px',
-          data: categoriaEncontrada
+          data: categoriaEncontrada,
         });
 
-
-        dialogRef.afterClosed().subscribe(resultado => {
-
+        dialogRef.afterClosed().subscribe((resultado) => {
           if (resultado) {
             this.carregarCategorias();
           }
-
         });
-
       },
 
       error: (erro) => {
         console.error('Erro ao buscar categoria:', erro);
-      }
-
+      },
     });
-
-}
+  }
 
   excluir(id: number) {
     Swal.fire({
@@ -118,6 +111,22 @@ editar(categoria: Categoria) {
 
       error: (erro) => {
         console.error('Erro ao buscar categoria:', erro);
+      },
+    });
+  }
+  buscar() {
+    if (!this.filtro.trim()) {
+      this.carregarCategorias();
+      return;
+    }
+
+    this.categoriaService.buscarPorNome(this.filtro).subscribe({
+      next: (resultado) => {
+        this.categorias = resultado;
+      },
+
+      error: (erro) => {
+        console.error('Erro na busca:', erro);
       },
     });
   }
