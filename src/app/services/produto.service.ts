@@ -30,8 +30,9 @@ export class ProdutoService {
   buscarPorId(id: number): Observable<Produto> {
     return this.http.get<Produto>(`${this.API}/${id}`);
   }
-
+/*
   buscarPorNome(nome: string): Observable<Produto[]> {
   return this.http.get<Produto[]>(`${this.API}/buscar?nome=${nome}`);
 }
+  */
 }

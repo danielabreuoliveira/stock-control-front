@@ -42,19 +42,21 @@ export class Produtos implements OnInit {
     });
   }
 
-  carregarProdutos() {
-    this.produtoService.listar().subscribe({
-      next: (resultado) => {
-        this.produtos = resultado;
+carregarProdutos() {
+  this.produtoService.listar().subscribe({
+    next: (resultado) => {
+      console.log('Produtos recebidos:', resultado);
 
-        this.cd.detectChanges();
-      },
+      this.produtos = resultado;
 
-      error: (erro) => {
-        console.error('Erro:', erro);
-      },
-    });
-  }
+      this.cd.detectChanges();
+    },
+
+    error: (erro) => {
+      console.error('Erro ao listar produtos:', erro);
+    },
+  });
+}
 
   editar(produto: Produto) {
     this.produtoService.buscarPorId(produto.id!).subscribe({

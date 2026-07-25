@@ -1,1 +1,85 @@
-<p>produtos works!</p>
+<div class="header">
+  <h2>Produtos</h2>
+
+  <button class="btn-nova" (click)="abrirModal()">
+    + Novo Produto
+  </button>
+</div>
+
+<div class="barra-busca">
+  <span class="icone-busca">🔍</span>
+
+  <input
+    type="text"
+    [(ngModel)]="filtro"
+    
+    placeholder="Buscar produto..."
+  />
+</div>
+
+<table class="tabela">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Categoria</th>
+      <th>Compra</th>
+      <th>Venda</th>
+      <th>Estoque</th>
+      <th>Ativo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    @for (produto of produtos; track produto.id) {
+
+      <tr>
+
+        <td>{{ produto.id }}</td>
+
+        <td>{{ produto.nome }}</td>
+
+        <td>{{ produto.categoriaNome }}</td>
+
+        <td>{{ produto.precoCompra | currency:'BRL':'symbol':'1.2-2' }}</td> 
+
+        <td>{{ produto.precoVenda | currency:'BRL':'symbol':'1.2-2' }}</td>
+
+        <td>{{ produto.estoque }}</td>
+
+        <td>
+          {{ produto.ativo ? 'Sim' : 'Não' }}
+        </td>
+
+        <td>
+
+          <button
+            class="btn-acao editar"
+            title="Editar produto"
+            (click)="editar(produto)">
+
+            ✏️
+
+          </button>
+
+          <button
+            class="btn-acao excluir"
+            title="Excluir produto"
+            (click)="excluir(produto.id!)">
+
+            🗑️
+
+          </button>
+
+        </td>
+
+      </tr>
+
+    }
+
+  </tbody>
+
+</table>
