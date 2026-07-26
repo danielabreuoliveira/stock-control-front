@@ -60,6 +60,8 @@ export class ProdutoForm implements OnInit {
   }
 
   salvar() {
+    console.log('Entrou no salvar');
+
     if (!this.produto.nome) {
       alert('Informe o nome do produto.');
       return;
@@ -69,9 +71,18 @@ export class ProdutoForm implements OnInit {
       alert('Selecione uma categoria.');
       return;
     }
+
+    if (this.produto.id) {
+      console.log('Atualizando produto...');
+      this.atualizar();
+    } else {
+      console.log('Cadastrando produto...');
+      this.cadastrar();
+    }
   }
 
   cadastrar() {
+    console.log('entrou no cadastrar');
     this.produtoService.salvar(this.produto).subscribe({
       next: () => {
         this.dialogRef.close(true);
@@ -93,5 +104,9 @@ export class ProdutoForm implements OnInit {
         console.log(erro);
       },
     });
+  }
+
+  fechar() {
+    this.dialogRef.close();
   }
 }
