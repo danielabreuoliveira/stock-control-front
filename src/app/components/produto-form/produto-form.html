@@ -1,1 +1,103 @@
-<p>produto-form works!</p>
+<h2 mat-dialog-title>
+  {{ produto.id ? 'Editar Produto' : 'Novo Produto' }}
+</h2>
+
+<div mat-dialog-content>
+
+  <div class="campo">
+    <label>Nome</label>
+    <input
+      type="text"
+      [(ngModel)]="produto.nome">
+  </div>
+
+  <div class="campo">
+    <label>Descrição</label>
+    <input
+      type="text"
+      [(ngModel)]="produto.descricao">
+  </div>
+
+  <div class="campo">
+    <label>Preço Compra</label>
+    <input
+      type="number"
+      [(ngModel)]="produto.precoCompra">
+  </div>
+
+  <div class="campo">
+    <label>Preço Venda</label>
+    <input
+      type="number"
+      [(ngModel)]="produto.precoVenda">
+  </div>
+
+  <div class="campo">
+    <label>Estoque</label>
+    <input
+      type="number"
+      [(ngModel)]="produto.estoque">
+  </div>
+
+  <div class="campo">
+    <label>Código de Barras</label>
+    <input
+      type="text"
+      [(ngModel)]="produto.codigoBarras">
+  </div>
+
+  <div class="campo">
+    <label>Categoria</label>
+
+    <select [(ngModel)]="produto.categoriaId">
+
+      <option [ngValue]="0">
+        Selecione...
+      </option>
+
+      @for (categoria of categorias; track categoria.id) {
+
+        <option [ngValue]="categoria.id">
+
+          {{ categoria.nome }}
+
+        </option>
+
+      }
+
+    </select>
+
+  </div>
+
+  <div class="campo">
+
+    <label>
+
+      <input
+        type="checkbox"
+        [(ngModel)]="produto.ativo">
+
+      Produto Ativo
+
+    </label>
+
+  </div>
+
+</div>
+
+<div mat-dialog-actions align="end">
+
+  <button mat-button (click)="dialogRef.close()">
+    Cancelar
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="salvar()">
+
+    Salvar
+
+  </button>
+
+</div>
