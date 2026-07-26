@@ -12,17 +12,11 @@ import { CategoriaService } from '../../services/categoria.service';
 @Component({
   selector: 'app-produto-form',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatDialogModule
-  ],
+  imports: [CommonModule, FormsModule, MatDialogModule],
   templateUrl: './produto-form.html',
-  styleUrl: './produto-form.css'
+  styleUrl: './produto-form.css',
 })
-
 export class ProdutoForm implements OnInit {
-
   produto: Produto = {
     nome: '',
     descricao: '',
@@ -31,7 +25,7 @@ export class ProdutoForm implements OnInit {
     estoque: 0,
     codigoBarras: '',
     ativo: true,
-    categoriaId: 0
+    categoriaId: 0,
   };
 
   categorias: Categoria[] = [];
@@ -42,66 +36,62 @@ export class ProdutoForm implements OnInit {
     private dialogRef: MatDialogRef<ProdutoForm>,
 
     @Inject(MAT_DIALOG_DATA)
-    public data: Produto
+    public data: Produto,
   ) {}
 
   ngOnInit(): void {
-
     this.carregarCategorias();
 
     if (this.data) {
       this.produto = this.data;
     }
-
   }
 
   carregarCategorias() {
-
     this.categoriaService.listar().subscribe({
-
       next: (resultado) => {
         this.categorias = resultado;
       },
 
       error: (erro) => {
         console.error(erro);
-      }
-
+      },
     });
-
   }
 
-  salvar(){
-    if(this.produto.id){
-      this.atualizar();
-    } else{
-      this.cadastrar();
+  salvar() {
+    if (!this.produto.nome) {
+      alert('Informe o nome do produto.');
+      return;
+    }
+
+    if (!this.produto.categoriaId) {
+      alert('Selecione uma categoria.');
+      return;
     }
   }
 
-  cadastrar(){
-
+  cadastrar() {
     this.produtoService.salvar(this.produto).subscribe({
-      next: () =>{
+      next: () => {
         this.dialogRef.close(true);
       },
 
       error: (erro) => {
         console.log(erro);
-      }
+      },
     });
   }
 
-  atualizar(){
-    this.produtoService.atualizar(this.produto.id!,this.produto).subscribe({
-      next: () =>{
+  atualizar() {
+    this.produtoService.atualizar(this.produto.id!, this.produto).subscribe({
+      next: () => {
         this.dialogRef.close(true);
       },
 
       error: (erro) => {
         console.log(erro);
-      }
+      },
     });
   }
-
 }
