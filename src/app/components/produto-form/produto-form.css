@@ -1,0 +1,32 @@
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo select {
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+mat-dialog-content {
+  min-width: 450px;
+}
+
+mat-dialog-actions {
+  margin-top: 15px;
+}
