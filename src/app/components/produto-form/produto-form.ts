@@ -71,4 +71,37 @@ export class ProdutoForm implements OnInit {
 
   }
 
+  salvar(){
+    if(this.produto.id){
+      this.atualizar();
+    } else{
+      this.cadastrar();
+    }
+  }
+
+  cadastrar(){
+
+    this.produtoService.salvar(this.produto).subscribe({
+      next: () =>{
+        this.dialogRef.close(true);
+      },
+
+      error: (erro) => {
+        console.log(erro);
+      }
+    });
+  }
+
+  atualizar(){
+    this.produtoService.atualizar(this.produto.id!,this.produto).subscribe({
+      next: () =>{
+        this.dialogRef.close(true);
+      },
+
+      error: (erro) => {
+        console.log(erro);
+      }
+    });
+  }
+
 }
